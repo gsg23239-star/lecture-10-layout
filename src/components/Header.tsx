@@ -31,20 +31,23 @@ const NavRight = styled.div`
     align-items: center;
 `;
 
-function Header() {
+function Header({ onClick }: { onClick: VoidFunction}) {
     return (
         <Head>
             <NavLeft>
                 <Logo>MyApp</Logo>
-                <nav>
-                    <Link to={{"/"}>Home</Link>
-                    <Link to={{"/about"}>About</Link>
-                        </nav>
-                    </NavLeft>
-                    <NavRight>
-                        <Link to={"/auth/login"}>로그인</Link>
-                </NavRight>
-        </Head>;
+                <Nav>
+                    <Link to={"/"}>Home</Link>
+                    <Link to={"/about"}>About</Link>
+                </Nav>
+            </NavLeft>
+            <NavRight>
+                <Link to={"/auth/login"}>로그인</Link>
+                <button onClick={onClick}>
+                    테마토글
+                </button>
+            </NavRight>
+        </Head>
     );
 }
 

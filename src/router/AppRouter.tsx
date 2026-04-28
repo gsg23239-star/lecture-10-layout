@@ -1,17 +1,20 @@
 import  { createBrowserRouter, type RouteObject } from "react-router";
-import MainLayout from "../layouts/mainLayout.tsx";
+import MainLayout from "../layouts/MainLayout.tsx";
 import Home from "../pages/Home.tsx";
 import About from "../pages/About.tsx";
 import LogIn from "../pages/LogIn.tsx";
 
-export const AppRouter = () => [
+// AppRouter 컴포넌트 x, 함수 0
+// 매개변수 자리에 onClick이 들어오는데, 얘는 매개변수니까
+// 타입스크립트에 의거하여 타입을 명시해줘야 함
+export const AppRouter = (onClick: VoidFunction) => {
     // 사용자 권한.  => 일반사용자, 솬리자
     //     회원관리  => /admin/user/list
     // 이 관리 기능은 Javascript로 접근을 해야됨. 그래서 이 방식을 제공하고 있음.
     // (이 방식이 react-router가 권장하는 방식)
     const routes : RouteObject[] = [
         {
-            element: <MainLayout />,
+            element: <MainLayout onClick={onClick}/>,
             path: "/",
             children: [
                 { index: true, element: <Home /> },
@@ -20,9 +23,9 @@ export const AppRouter = () => [
         },
         {
             path: "/auth/login",
-            element: <logIn />,
+            element: <LogIn />,
         },
     ];
 
-    return createBrowserRouter(routes);
+    return createBrowserRouter(routes)
 };
