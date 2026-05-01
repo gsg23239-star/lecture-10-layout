@@ -29,12 +29,12 @@ function App() {
 
     // 2. Context 제공자로 묶어주기
     return (
-        <ThemeContext.provider value={{ theme, toggleTheme: onClick }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme: onClick }}>
             <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
                 <GlobalStyle />
                 <RouterProvider router={AppRouter()} />
             </ThemeProvider>
-        </ThemeContext.provider>
+        </ThemeContext.Provider>
     );
 }
 

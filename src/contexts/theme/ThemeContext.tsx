@@ -4,8 +4,7 @@ type ThemeMode = "light" | "dark";
 
 type ThemeContextType = {
     theme: ThemeMode;
-    toggleTheme: () => VoidFunction;
+    toggleTheme: () => void; // 🔥 여기 수정
 };
 
-// 1. Context 생성 : createContext(초기값);  => 근데 초기값ㅇ; 대부분 null
 export const ThemeContext = createContext<ThemeContextType | null>(null);
